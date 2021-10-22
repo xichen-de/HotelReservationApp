@@ -83,25 +83,24 @@ public class MainMenu {
         }
         Collection<IRoom> availableRooms = hotelResource.findARoom(checkInDate, checkOutDate);
         if (!availableRooms.isEmpty()) {
-            bookARoom(checkInDate, checkOutDate, availableRooms, "Available rooms:");
+            System.out.println("There are rooms available:");
+            bookARoom(checkInDate, checkOutDate, availableRooms);
         } else {
+            System.out.println("No rooms available. Search for recommended rooms...");
             Date newCheckInDate = sevenDaysAfterDate(checkInDate);
             Date newCheckOutDate = sevenDaysAfterDate(checkOutDate);
             Collection<IRoom> newAvailableRooms = hotelResource.findARoom(newCheckInDate, newCheckOutDate);
             if (!newAvailableRooms.isEmpty()) {
-                bookARoom(newCheckInDate, newCheckOutDate, newAvailableRooms, "There is no room available. " +
-                        "Recommended rooms:");
+                bookARoom(newCheckInDate, newCheckOutDate, newAvailableRooms);
             } else {
                 System.out.println("There is no room available. Sorry.");
             }
         }
     }
 
-    private void bookARoom(Date checkInDate, Date checkOutDate, Collection<IRoom> availableRooms, String s) {
-        System.out.println(s);
+    private void bookARoom(Date checkInDate, Date checkOutDate, Collection<IRoom> availableRooms) {
         System.out.println(availableRooms);
-        System.out.println("Check in date: " + checkInDate);
-        System.out.println("Check out date: " + checkOutDate);
+        System.out.println("Check in date: " + checkInDate + " , check out date: " + checkOutDate);
         System.out.println("Which available room do you want to reserve? Please input room number.");
         String choice = inputScanner.nextLine();
         if (!validateRoomNumber(availableRooms, choice)) {
