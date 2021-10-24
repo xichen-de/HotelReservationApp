@@ -49,10 +49,10 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ReservationServiceTest {
-    ReservationService reservationService = ReservationService.getInstance();
-    Customer customer = new Customer("a", "b", "abc@gmail.com");
-    Date checkInDate = new Date();
-    Date checkOutDate = new Date();
+    final ReservationService reservationService = ReservationService.getInstance();
+    final Customer customer = new Customer("a", "b", "abc@gmail.com");
+    final Date checkInDate = new Date();
+    final Date checkOutDate = new Date();
 
     @BeforeEach
     void setUp() {

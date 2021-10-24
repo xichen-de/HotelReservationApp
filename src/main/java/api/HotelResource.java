@@ -67,8 +67,8 @@ public class HotelResource {
         return reservationService.getARoom(roomNumber);
     }
 
-    public Reservation bookARoom(String customerEmail, IRoom room, Date checkInDate, Date checkOutDate) {
-        return reservationService.reserveARoom(customerService.getCustomer(customerEmail),
+    public void bookARoom(String customerEmail, IRoom room, Date checkInDate, Date checkOutDate) {
+        reservationService.reserveARoom(customerService.getCustomer(customerEmail),
                 room,
                 checkInDate,
                 checkOutDate);
